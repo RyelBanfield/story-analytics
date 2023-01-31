@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const Hero = () => {
+  const { status } = useSession();
+
   return (
     <section className="bg-gray-50">
       <div className="mx-auto max-w-screen-xl px-6 py-32 lg:flex lg:h-screen lg:items-center">
@@ -19,19 +22,30 @@ const Hero = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              className="block w-full rounded bg-red-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
-              href="/"
-            >
-              Get Started
-            </Link>
+            {status === "unauthenticated" && (
+              <Link
+                className="block w-full rounded bg-red-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+                href="/login"
+              >
+                Get Started
+              </Link>
+            )}
 
-            <Link
+            {status === "authenticated" && (
+              <Link
+                className="block w-full rounded bg-red-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+                href="/dashboard"
+              >
+                Dashboard
+              </Link>
+            )}
+
+            {/* <Link
               className="block w-full rounded px-12 py-3 text-sm font-medium text-red-600 shadow hover:text-red-700 focus:outline-none focus:ring active:text-red-500 sm:w-auto"
               href="/"
             >
               Learn More
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
