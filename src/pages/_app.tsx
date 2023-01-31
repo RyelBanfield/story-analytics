@@ -1,9 +1,12 @@
 import "../styles/globals.css";
 
 import { type AppType } from "next/app";
+import Head from "next/head";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import { api } from "../utils/api";
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -12,7 +15,17 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <Head>
+        <title>Story Analytics</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Header />
+      <main className="flex flex-grow flex-col ">
+        <Component {...pageProps} />
+      </main>
+      <Footer />
     </SessionProvider>
   );
 };
