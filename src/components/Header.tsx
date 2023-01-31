@@ -27,7 +27,7 @@ const Header = () => {
             className="font-medium text-red-600"
             onClick={sessionData ? () => void signOut() : () => void signIn()}
           >
-            {sessionData ? "Sign out" : "Sign in"}
+            {sessionData ? "Sign out" : "Login"}
           </button>
         </div>
       </div>
