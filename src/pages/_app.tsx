@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "@tremor/react/dist/esm/tremor.css";
 
 import { type AppType } from "next/app";
 import Head from "next/head";
@@ -22,7 +23,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main className="flex flex-grow flex-col ">
+      <main className="flex flex-grow flex-col">
         <Component {...pageProps} />
       </main>
       <Footer />
