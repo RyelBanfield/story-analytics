@@ -5,7 +5,7 @@ const Hero = () => {
   const { status } = useSession();
 
   return (
-    <section className="bg-gray-50">
+    <section>
       <div className="mx-auto max-w-screen-xl px-6 py-32 lg:flex lg:h-screen lg:items-center">
         <div className="mx-auto max-w-xl text-center">
           <h1 className="text-3xl font-extrabold sm:text-5xl">
