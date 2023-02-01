@@ -1,8 +1,27 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { signIn, signOut, useSession } from "next-auth/react";
+
+const pages = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Dashboard",
+    href: "/dashboard",
+  },
+  {
+    name: "Account",
+    href: "/account",
+  },
+];
 
 const Header = () => {
   const { data: sessionData, status } = useSession();
+
+  const router = useRouter();
+  const activePage = pages.find((page) => page.href === router.pathname);
 
   return (
     <header>
@@ -10,30 +29,26 @@ const Header = () => {
         <Link href="/" className="block text-red-600">
           <span className="text-lg font-medium">Story Analytics</span>
         </Link>
-        <nav>
-          <ul className="flex items-center gap-6 text-sm">
-            {status === "authenticated" && (
-              <>
-                <li>
+        {status === "authenticated" && (
+          <nav>
+            <ul className="flex items-center gap-6 text-sm">
+              {pages.map((page) => (
+                <li key={page.name}>
                   <Link
-                    className="text-gray-500 transition hover:text-gray-500/75"
-                    href="/"
+                    href={page.href}
+                    className={
+                      activePage?.name === page.name
+                        ? "text-red-600 transition"
+                        : "text-gray-500 transition hover:text-gray-500/75"
+                    }
                   >
-                    Home
+                    {page.name}
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    className="text-gray-500 transition hover:text-gray-500/75"
-                    href="/dashboard"
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-              </>
-            )}
-          </ul>
-        </nav>
+              ))}
+            </ul>
+          </nav>
+        )}
         <div className="flex flex-1 items-center justify-end">
           <button
             className="font-medium text-red-600"
