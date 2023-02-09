@@ -31,9 +31,7 @@ const Dashboard = () => {
       }),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+      .then((data: { postExists: boolean }) => {
         setResult(data.postExists);
         setLoading(false);
       })
