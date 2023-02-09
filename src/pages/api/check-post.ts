@@ -32,7 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const postExists = await runUnauthenticatedBrowser(url);
 
-  res.send({ postExists });
+  res.status(200).json({ postExists });
 };
 
 export default handler;
