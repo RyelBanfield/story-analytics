@@ -23,8 +23,6 @@ export const serverSchema = z.object({
   // DISCORD_CLIENT_SECRET: z.string(),
   EMAIL_SERVER: z.string(),
   EMAIL_FROM: z.string(),
-  INSTA_USERNAME: z.string(),
-  INSTA_PASSWORD: z.string(),
 });
 
 /**
@@ -41,8 +39,6 @@ export const serverEnv = {
   // DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
   EMAIL_SERVER: process.env.EMAIL_SERVER,
   EMAIL_FROM: process.env.EMAIL_FROM,
-  INSTA_USERNAME: process.env.INSTA_USERNAME,
-  INSTA_PASSWORD: process.env.INSTA_PASSWORD,
 };
 
 /**
