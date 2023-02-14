@@ -21,7 +21,7 @@ const Dashboard = () => {
   const checkPost = () => {
     setLoading(true);
 
-    fetch("/api/check-post", {
+    fetch("https://sa-api.fly.dev", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,11 +31,9 @@ const Dashboard = () => {
       }),
     })
       .then((res) => res.json())
-      .then((data: { postExists: boolean }) => {
-        setResult(data.postExists);
-        setLoading(false);
-      })
-      .catch((error) => console.log(error));
+      .then((data: { postExists: boolean }) => setResult(data.postExists))
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
   };
 
   return (
